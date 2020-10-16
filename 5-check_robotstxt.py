@@ -1,3 +1,22 @@
+#!/usr/bin/env python
+'''
+Check robots.txt file and save a version every time it changes.
+
+@author:    Jean-Christophe Chouinard. 
+@role:      Sr. SEO Specialist at SEEK.com.au
+@website:   jcchouinard.com
+@LinkedIn:  linkedin.com/in/jeanchristophechouinard/ 
+@Twitter:   twitter.com/@ChouinardJC
+
+What it does:
+Fetch Robots.txt. 
+Read each line in the file. 
+Save the file with the date. 
+If a robots.txt file exists from a previous extraction, check if the file has changed. 
+If it hase changed, save a new version and send an Alert. 
+This way, you don’t need to save a file every day, only when it changes.
+'''
+
 from datetime import datetime
 import easygui
 import os

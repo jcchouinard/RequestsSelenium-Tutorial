@@ -1,3 +1,19 @@
+#!/usr/bin/env python
+'''
+Make a Redirection Report
+
+@author:    Jean-Christophe Chouinard. 
+@role:      Sr. SEO Specialist at SEEK.com.au
+@website:   jcchouinard.com
+@LinkedIn:  linkedin.com/in/jeanchristophechouinard/ 
+@Twitter:   twitter.com/@ChouinardJC
+
+What it does:
+Crawl a list of URLs.
+Count the number of redirects.
+Check if it has a redirect or a canonical loop
+Report on errors.
+'''
 import os
 import pandas as pd
 from urllib.parse import urljoin

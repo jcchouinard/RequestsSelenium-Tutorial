@@ -1,3 +1,13 @@
+#!/usr/bin/env python
+'''
+Run Selenium in headless Chrome
+
+@author:    Jean-Christophe Chouinard. 
+@role:      Sr. SEO Specialist at SEEK.com.au
+@website:   jcchouinard.com
+@LinkedIn:  linkedin.com/in/jeanchristophechouinard/ 
+@Twitter:   twitter.com/@ChouinardJC
+'''
 import time
 
 from selenium import webdriver

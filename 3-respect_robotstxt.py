@@ -1,3 +1,19 @@
+#!/usr/bin/env python
+'''
+Check Robots.txt before Fetching a page
+
+@author:    Jean-Christophe Chouinard. 
+@role:      Sr. SEO Specialist at SEEK.com.au
+@website:   jcchouinard.com
+@LinkedIn:  linkedin.com/in/jeanchristophechouinard/ 
+@Twitter:   twitter.com/@ChouinardJC
+
+What it does:
+Check base URL given,
+Get the robots.txt url from the base url
+Fetch Robots.txt and check if URL is allowed
+If it is allowed, run Selenium and print Title of the page
+'''
 import time
 
 from reppy.robots import Robots

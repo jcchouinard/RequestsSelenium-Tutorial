@@ -1,3 +1,19 @@
+#!/usr/bin/env python
+'''
+Simple Selenium browser automation.
+
+@author:    Jean-Christophe Chouinard. 
+@role:      Sr. SEO Specialist at SEEK.com.au
+@website:   jcchouinard.com
+@LinkedIn:  linkedin.com/in/jeanchristophechouinard/ 
+@Twitter:   twitter.com/@ChouinardJC
+
+What it does:
+Opens Chrome;
+Visit URL;
+Print the HTML of the page;
+Close browser.
+'''
 import time
 
 from selenium import webdriver
