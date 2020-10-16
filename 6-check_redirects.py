@@ -66,6 +66,15 @@ def check_redirects(url_list):
         df.to_csv(filename)
     return df
 
+def highlight_errors(x):
+    '''
+    highlight the maximum in a Series yellow.
+    '''
+    if x['destination_status'] != 200 or x['loop'] == 'Yes':
+        return ['color: #d65f5f'] * 7
+    else:
+        return ['color: #5fba7d'] * 7 
+
 
 if __name__ == '__main__':
     path = os.getcwd()
@@ -73,6 +82,7 @@ if __name__ == '__main__':
     create_project(directory)
     filename = directory + 'redirect_report.csv'
     df = check_redirects(urls)
+    df.style.apply(highlight_errors, axis=1)
 ## For those who would like to add the list of redirects to the df
 # for j in range(1,len(r.history)):
 #     status = r.history[j].status_code

@@ -14,16 +14,26 @@ Get the robots.txt url from the base url
 Fetch Robots.txt and check if URL is allowed
 If it is allowed, run Selenium and print Title of the page
 '''
-import time
-
 from reppy.robots import Robots
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from termcolor import colored
 
 from functions import get_domain_name
 
 domain = 'https://www.jcchouinard.com/'
-uris = ['python-for-seo','wp-content']
+
+uris = [
+    'python-for-seo',
+    'wp-content',
+    'learn-selenium-python-seo-automation',
+    'learn-git-and-github',
+    'python-automation-with-cron-on-mac',
+    'google-search-console-api',
+    'chrome-devtools-commands-for-seo',
+    'how-to-use-reddit-api-with-python'
+    ]
+
 urls = [domain + uri for uri in uris] # combine domain to URL
 
 def get_robots_url(url):
@@ -49,7 +59,7 @@ def print_title(url,headless=True):
     Run Selenium.
     Print Title.
     '''
-    print(f'Opening {url}')
+    print(colored(f'Opening {url}','green')) # make it fancy
     options = Options()
     options.headless = headless
     driver = webdriver.Chrome(options=options)
@@ -68,7 +78,7 @@ def run_selenium(url):
     if validation:
         print_title(url)
     else:
-        print(f'{url} is blocked by robots.txt')
+        print(colored(f'{url} is blocked by robots.txt','red'))
 
 for url in urls:
     run_selenium(url)
