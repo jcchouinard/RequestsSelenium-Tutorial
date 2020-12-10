@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 '''
 Check robots.txt file and save a version every time it changes.
+https://www.jcchouinard.com/alert-robots-txt-changes-to-slack-using-python/
 
 @author:    Jean-Christophe Chouinard. 
 @role:      Sr. SEO Specialist at SEEK.com.au
@@ -18,7 +19,8 @@ This way, you don’t need to save a file every day, only when it changes.
 '''
 
 from datetime import datetime
-import easygui
+import easygui # for sending msg
+import requests # for sending msg
 import os
 import time
 
@@ -91,8 +93,12 @@ def compare_robots(output,output_files,r):
         if new_robotstxt != last_robotstxt:
             print('Robots.txt was modified')
             write_robotstxt(new_robotstxt, output)
-            easygui.msgbox(f'The Robots.txt was changed for {filename}', title="simple gui")
-            # For simplicity. I would send an email or a slack notification instead.
+            message = f'The Robots.txt was changed for {filename}'
+            print(message)
+            # Instead of print:
+            # easygui.msgbox(f'The Robots.txt was changed for {filename}', title="simple gui")
+            # requests.post('https://hooks.slack.com/services/XXXXXXXXXXX',json={'text':message}, verify=False)
+            # https://www.jcchouinard.com/slack-api/
         else:
             print('No Change to Robots.txt')
     else:
@@ -101,8 +107,3 @@ def compare_robots(output,output_files,r):
 
 if __name__ == '__main__':
     main(robotstxt)
-
-
-# filename ='/Users/jean.christophe/Documents/Github/PVT-SEO-PROJECTS/Python/Selenium/ranksense-selenium/output/2020-10-02:13:3314-robots.txt'
-# with open(filename, 'r') as f:
-#     print(''.join(f.readlines()))
