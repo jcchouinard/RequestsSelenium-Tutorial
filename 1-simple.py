@@ -18,8 +18,8 @@ import time
 
 from selenium import webdriver
 
-url = 'https://www.jcchouinard.com/python-for-seo/' # Define page to run 
-driver = webdriver.Chrome() # Open Chrome
+url = 'https://www.jcchouinard.com/learn-selenium-python-seo-automation/' # Define page to run 
+driver = webdriver.Chrome('/usr/local/bin/chromedriver') # Open Chrome
 driver.get(url)             # Visit URL
 
 print(driver.page_source)   # Print HTML

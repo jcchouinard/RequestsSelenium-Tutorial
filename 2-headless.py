@@ -22,5 +22,7 @@ driver = webdriver.Chrome(options=options)
 
 driver.get(url)
 time.sleep(3)
+t = driver.title
+print(f'Title: {t}')
 
 driver.quit()
