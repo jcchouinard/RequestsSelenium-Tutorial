@@ -54,15 +54,17 @@ def robot_parser(url):
     validation = parser.allowed(url, '*')
     return validation
 
-def print_title(url,headless=True):
+def get_title(url,headless=True):
     '''
     Run Selenium.
     Print Title.
+    url: full url that you want to extract
+    headless: define if your want to see the browser opening or not.
     '''
     print(colored(f'Opening {url}','green')) # make it fancy
     options = Options()
     options.headless = headless
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome(options=options,executable_path='/usr/local/bin/chromedriver')
     driver.get(url)
     t = driver.title
     print(f'Title: {t}')
@@ -76,7 +78,7 @@ def run_selenium(url):
     '''
     validation = robot_parser(url)
     if validation:
-        print_title(url)
+        get_title(url)
     else:
         print(colored(f'{url} is blocked by robots.txt','red'))
 

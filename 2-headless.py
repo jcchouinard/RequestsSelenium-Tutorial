@@ -18,7 +18,7 @@ url = 'https://www.jcchouinard.com/python-for-seo/'
 options = Options()
 options.headless = True
 # options.add_argument("--window-size=1920,1200")
-driver = webdriver.Chrome(options=options)
+driver = webdriver.Chrome(options=options,executable_path='/usr/local/bin/chromedriver')
 
 driver.get(url)
 time.sleep(3)
