@@ -29,13 +29,19 @@ def fetch_page(url,allow_redirects=True,timeout=3):
         r = 'ConnectionError'
     except requests.exceptions.HTTPError as e:
         r = 'HTTPError'
-    except requests.exceptions.ProxyError as e:
+    except requests.exceptions.ConnectionError.ProxyError as e:
         r = 'ProxyError'
-    except requests.exceptions.SSLError as e:
+    except requests.exceptions.ConnectionError.SSLError as e:
         r = 'SSLError'
     except requests.exceptions.InvalidURL as e:
         r = 'InvalidURL'
     return r
+
+# def fetch_page(url,allow_redirects=True,timeout=3):
+#     try:
+#         r = requests.get(url,allow_redirects=allow_redirects,timeout=timeout)
+#     except requests.exceptions.RequestException as e: 
+#         r = e
 
 def get_domain_name(url):
     return '{uri.scheme}://{uri.netloc}'.format(uri=urlparse(url))

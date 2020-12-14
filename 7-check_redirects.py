@@ -75,7 +75,6 @@ def highlight_errors(x):
     else:
         return ['color: #5fba7d'] * 7 
 
-
 if __name__ == '__main__':
     path = os.getcwd()
     directory = path + '/output/'
