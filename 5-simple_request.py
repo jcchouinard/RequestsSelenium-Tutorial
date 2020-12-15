@@ -10,7 +10,6 @@ Simple HTTP Get Request
 
 $ pip install requests
 '''
-
 import requests
 
 url = 'https://www.jcchouinard.com/python-for-seo/' 

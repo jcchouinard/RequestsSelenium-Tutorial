@@ -58,6 +58,6 @@ def headless_chrome(url,headless=True):
     driver.quit()
     return html
 
-if __name__ == '__main__':
+if __name__ == '__main__': 
     source_html = make_request(url)
     rendered_html = headless_chrome(url,headless=True)
