@@ -71,7 +71,7 @@ def check_redirects(url_list):
                 print(f'Canonical: {canonical[1]}')
                 df.loc[i,'canonical'] = canonical[1]    # Add to dataframe  
                 domain = get_domain_name(url) # to handle relative URLs  
-                absolute_canonical = urljoin(domain, canonical[1]) # returns http://127.0.0.1:5000/canonical-loop
+                absolute_canonical = urljoin(domain, canonical[1]) # takes this /canonical-loop and returns http://127.0.0.1:5000/canonical-loop
                 if absolute_canonical == url:           # if both are equals
                     df.loc[i,'loop'] = 'Yes'
         df.to_csv(filename)
