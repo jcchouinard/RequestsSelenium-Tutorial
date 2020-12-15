@@ -9,7 +9,7 @@ Two tools to understand crawling and rendering better.
 
 1. Simple scripts to use Selenium and Requests modules
 2. Learn to respect robots.txt
-3. Run Selenium in Staging
+3. Login to staging site with Selenium
 4. Check redirect errors
 5. Robots.txt alert system to slack 
 
