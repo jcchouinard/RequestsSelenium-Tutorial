@@ -23,5 +23,6 @@ try:
 except requests.exceptions.RequestException as e: 
     raise SystemExit(e)
 
+print(r.text)
 print(r.url)
 print(r.status_code)

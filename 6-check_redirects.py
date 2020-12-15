@@ -46,7 +46,6 @@ def check_redirects(url_list):
     df = pd.DataFrame()
     for i in range(len(url_list)): 
         url = url_list[i] 
-        domain = get_domain_name(url) # to handle relative URLs
 
         r = fetch_page(url) 
 
@@ -64,13 +63,14 @@ def check_redirects(url_list):
             df.loc[i,'destination_url'] = r.url
             df.loc[i,'destination_status'] = r.status_code
             for h in r.history:
-                print(h)
+                print(f'{h} -> {h.headers["Location"]}')
             df.loc[i,'num_redirects'] = len(r.history)
             df.loc[i,'loop'] = 'No'
             if r.status_code == 200: 
                 canonical = get_canonical_from_html(r) 
                 print(f'Canonical: {canonical[1]}')
-                df.loc[i,'canonical'] = canonical[1]    # Add to dataframe    
+                df.loc[i,'canonical'] = canonical[1]    # Add to dataframe  
+                domain = get_domain_name(url) # to handle relative URLs  
                 absolute_canonical = urljoin(domain, canonical[1]) # returns http://127.0.0.1:5000/canonical-loop
                 if absolute_canonical == url:           # if both are equals
                     df.loc[i,'loop'] = 'Yes'

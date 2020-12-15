@@ -22,27 +22,21 @@ def fetch_page(url,allow_redirects=True,timeout=3):
     print(f'Fetching {url}')
     try:
         r = requests.get(url,allow_redirects=allow_redirects,timeout=timeout)
+    except requests.exceptions.ProxyError:
+        r = 'ProxyError'
+    except requests.exceptions.SSLError:
+        r = 'SSLError'
     except requests.exceptions.Timeout:
         r = 'ConnectionTimeout'
     except requests.exceptions.TooManyRedirects:
         r = 'TooManyRedirects'
-    except requests.exceptions.ConnectionError as e:
+    except requests.exceptions.ConnectionError:
         r = 'ConnectionError'
-    except requests.exceptions.HTTPError as e:
+    except requests.exceptions.HTTPError:
         r = 'HTTPError'
-    except requests.exceptions.ConnectionError.ProxyError as e:
-        r = 'ProxyError'
-    except requests.exceptions.ConnectionError.SSLError as e:
-        r = 'SSLError'
-    except requests.exceptions.InvalidURL as e:
+    except requests.exceptions.InvalidURL:
         r = 'InvalidURL'
     return r
-
-# def fetch_page(url,allow_redirects=True,timeout=3):
-#     try:
-#         r = requests.get(url,allow_redirects=allow_redirects,timeout=timeout)
-#     except requests.exceptions.RequestException as e: 
-#         r = e
 
 def get_domain_name(url):
     return '{uri.scheme}://{uri.netloc}'.format(uri=urlparse(url))
