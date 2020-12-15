@@ -99,5 +99,3 @@ if __name__ == '__main__':
 #     url = r.history[j].url.replace(domain,'')
 #     df.loc[i,f'redirect_{j}_url'] = url
 #     df.loc[i,f'redirect_{j}_stats'] = status
-
-
