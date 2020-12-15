@@ -19,6 +19,7 @@ def fetch_page(url,allow_redirects=True,timeout=3):
     '''
     Use requests to fetch URL
     '''
+    print(f'Fetching {url}')
     try:
         r = requests.get(url,allow_redirects=allow_redirects,timeout=timeout)
     except requests.exceptions.Timeout:

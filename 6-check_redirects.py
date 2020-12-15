@@ -31,37 +31,48 @@ urls = [
 
 def check_redirects(url_list):
     '''
+    Create empty dataframe
     Loop through each URL.
     Fetch the page
     Counts the number of redirects
     Check Canonical
     Return data or errors
+    Append data to dataframe
+
+    Example:
+    http://127.0.0.1:5000/canonical-loop > 301 > http://127.0.0.1:5000/canonical
+    http://127.0.0.1:5000/canonical > Canonical > /canonical-loop
     '''
     df = pd.DataFrame()
     for i in range(len(url_list)): 
-        url = url_list[i]
-        domain = get_domain_name(url)
+        url = url_list[i] 
+        domain = get_domain_name(url) # to handle relative URLs
 
         r = fetch_page(url) 
 
         df.loc[i,'start_url'] = url
 
         if type(r) == str: # If there is an error
+            print(r)
             df.loc[i,'error_type'] = r
             df.loc[i,'destination_url'] = 'Error'
             if df.loc[i,'error_type'] == 'TooManyRedirects':
                 df.loc[i,'loop'] = 'Yes'
                 df.loc[i,'num_redirects'] = 30.0
-        else:    
+        else:
+            print(f'Status code: {r.status_code}')    
             df.loc[i,'destination_url'] = r.url
             df.loc[i,'destination_status'] = r.status_code
+            for h in r.history:
+                print(h)
             df.loc[i,'num_redirects'] = len(r.history)
             df.loc[i,'loop'] = 'No'
-            if r.status_code == 200:
-                canonical = get_canonical_from_html(r)
-                df.loc[i,'canonical'] = canonical[1]
-                absolute_canonical = urljoin(domain, canonical[1])
-                if absolute_canonical == url:
+            if r.status_code == 200: 
+                canonical = get_canonical_from_html(r) 
+                print(f'Canonical: {canonical[1]}')
+                df.loc[i,'canonical'] = canonical[1]    # Add to dataframe    
+                absolute_canonical = urljoin(domain, canonical[1]) # returns http://127.0.0.1:5000/canonical-loop
+                if absolute_canonical == url:           # if both are equals
                     df.loc[i,'loop'] = 'Yes'
         df.to_csv(filename)
     return df
