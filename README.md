@@ -15,6 +15,13 @@ Requests: HTTP requests
 
 This tutorial was created for [RankSense](https://www.ranksense.com/) as part of a [#RSTwittorial](https://twitter.com/hashtag/rstwittorial).
 
+## Get Started
+
+For this tutorial you will need to [install Selenium](https://www.jcchouinard.com/learn-selenium-python-seo-automation/).
+
+Install Requirements.
+`$ pip install -r requirements.txt`
+
 ## About the Author
 
 @author: Jean-Christophe Chouinard
@@ -27,12 +34,6 @@ Linkedin:[/in/jeanchristophechouinard](https://www.linkedin.com/in/jeanchristoph
 
 Twitter:[@ChouinardJC](https://twitter.com/ChouinardJC)
 
-## Get Started
-
-For this tutorial you will need to [install Selenium](https://www.jcchouinard.com/learn-selenium-python-seo-automation/).
-
-Install Requirements.
-`$ pip install -r requirements.txt`
 
 ## Other Interesting Guides from The Author
 
