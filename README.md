@@ -1,10 +1,11 @@
 # Use Requests and Selenium for SEO testing
 
+How to use Requests and Selenium to prevent SEO errors. 
 
-Use Requests and Selenium to prevent SEO errors. Two tools to understand crawling and rendering better.
+Two tools to understand crawling and rendering better.
 
 Selenium: Browser Automation
-Requests: Handles HTTP requests to a web server.
+Requests: HTTP requests
 
 1. Simple scripts to use Selenium and Requests modules
 2. Learn to respect robots.txt
@@ -12,6 +13,9 @@ Requests: Handles HTTP requests to a web server.
 4. Check redirect errors
 5. Robots.txt alert system to slack 
 
+This tutorial was created for [RankSense](https://www.ranksense.com/) as part of a [#RSTwittorial](https://twitter.com/hashtag/rstwittorial).
+
+# About the Author
 
 @author: Jean-Christophe Chouinard
 
@@ -22,8 +26,6 @@ Blog: [jcchouinard.com](https://www.jcchouinard.com)
 Linkedin:[/in/jeanchristophechouinard](https://www.linkedin.com/in/jeanchristophechouinard)
 
 Twitter:[@ChouinardJC](https://twitter.com/ChouinardJC)
-
-This tutorial was created for [RankSense](https://www.ranksense.com/) as part of a [#RSTwittorial](https://twitter.com/hashtag/rstwittorial).
 
 ## Get Started
 
