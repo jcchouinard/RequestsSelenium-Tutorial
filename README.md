@@ -15,7 +15,7 @@ Requests: HTTP requests
 
 This tutorial was created for [RankSense](https://www.ranksense.com/) as part of a [#RSTwittorial](https://twitter.com/hashtag/rstwittorial).
 
-# About the Author
+## About the Author
 
 @author: Jean-Christophe Chouinard
 
