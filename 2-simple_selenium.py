@@ -9,9 +9,9 @@ Simple Selenium browser automation.
 @Twitter:   twitter.com/@ChouinardJC
 
 What it does:
-Opens Chrome;
-Visit URL;
-Print the HTML of the page;
+Opens Chrome
+Visit URL
+Print the HTML of the page
 Close browser.
 '''
 import time
