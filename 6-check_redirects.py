@@ -28,8 +28,12 @@ urls = [
     'http://127.0.0.1:5000/canonical-loop',
     'http://127.0.0.1:5000/timeout'
     ]
-for i in range(len(urls)):
-    print(urls[i])
+# for i in range(len(urls)):
+#     print(f'i is: {i}')
+#     print(f'url is: {urls[i]}')
+
+# for url in urls:
+#     print(url)
 
 def check_redirects(url_list):
     '''
@@ -70,9 +74,10 @@ def check_redirects(url_list):
             df.loc[i,'loop'] = 'No'
             if r.status_code == 200: 
                 canonical = get_canonical_from_html(r) 
+                print(f'Canonical tuple: {canonical}')
                 print(f'Canonical: {canonical[1]}')
                 df.loc[i,'canonical'] = canonical[1]    # Add to dataframe  
-                domain = get_domain_name(url) # to handle relative URLs  
+                domain = get_domain_name(url)           # to handle relative URLs  
                 absolute_canonical = urljoin(domain, canonical[1]) # takes this /canonical-loop and returns http://127.0.0.1:5000/canonical-loop
                 if absolute_canonical == url:           # if both are equals
                     df.loc[i,'loop'] = 'Yes'

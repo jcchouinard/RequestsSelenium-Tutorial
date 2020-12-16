@@ -14,7 +14,7 @@ Fetch Robots.txt.
 Read each line in the file. 
 Save the file with the date. 
 If a robots.txt file exists from a previous extraction, check if the file has changed. 
-If it hase changed, save a new version and send an Alert. 
+If it has changed, save a new version and send an Alert. 
 This way, you don’t need to save a file every day, only when it changes.
 '''
 
@@ -26,31 +26,37 @@ import time
 
 from functions import create_project, fetch_page, get_date, get_domain_directory
 
-robotstxt = 'http://127.0.0.1:5000/robots.txt'
-# robotstxt = 'https://www.jcchouinard.com/robots.txt'
+# robotstxt = 'http://127.0.0.1:5000/robots.txt'
+robotstxt = 'https://www.jcchouinard.com/robots.txt'
 
 def main(url,filename='robots.txt'):
     '''
     Combine all functions
+    Get domain name from url
+    Create project with domain name if not exist
+    Look for existing saved robots.txt
+    Fetch robots.txt url
+    Compare robots.txt with last saved version
+    If changed.
+    Output the new robots.txt with date timestamp
     '''
     path = os.getcwd()
-    site = get_domain_directory(robotstxt)
+    site = get_domain_directory(robotstxt) # Check if project exists
     output = path + '/output/' + site + '/'
     create_project(output)
+    output_files = get_files(output)
     r = fetch_page(url)
-    output_files = get_robots_files(output)
     compare_robots(output, output_files,r)
 
-def get_robots_files(directory):
-    '''
-    List robots.txt file in output folder
+def get_files(directory):
+    ''' List all files in output folder.
     '''
     output_files = os.listdir(directory)
     output_files.sort()
     return output_files
 
-def get_robotstxt_name(output_files):
-    '''
+def get_latest_robotstxt(output_files):
+    ''' Get only files containting robots.txt in name
     Get last saved robots.txt file.
     '''
     robots_txt = 'robots.txt'
@@ -61,8 +67,7 @@ def get_robotstxt_name(output_files):
     return files[-1]
 
 def read_robotstxt(filename):
-    '''
-    Read robots.txt
+    ''' Read robots.txt
     '''
     if os.path.isfile(filename):
         with open(filename,'r') as f:
@@ -70,8 +75,7 @@ def read_robotstxt(filename):
     return txt
 
 def write_robotstxt(file, output, filename='robots.txt'):
-    '''
-    Write robots.txt to file using date as identifier.
+    ''' Write robots.txt to file using date as id.
     '''
     filename = get_date() + '-' + filename
     filename = output + filename
@@ -83,10 +87,10 @@ def compare_robots(output,output_files,r):
     Compare previous robots to actual robots.
     If different. Save File.
     '''
-    new_robotstxt = r.text.replace('\r', '')
+    new_robotstxt = r.text.replace('\r', '') # Get rid of carriage return 
 
     if output_files:
-        robots_filename = get_robotstxt_name(output_files) 
+        robots_filename = get_latest_robotstxt(output_files) 
         filename = output + robots_filename
         last_robotstxt = read_robotstxt(filename)
         last_robotstxt = last_robotstxt.replace('\r', '')
