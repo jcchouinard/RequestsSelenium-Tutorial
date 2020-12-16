@@ -20,6 +20,9 @@ For this tutorial you will need to [install Selenium](https://www.jcchouinard.co
 Install Requirements.
 `$ pip install -r requirements.txt`
 
+It would also be recommended to [set-up a virtual environment](https://www.jcchouinard.com/how-to-use-anaconda-environments/).
+
+
 ## About the Author
 
 @author: Jean-Christophe Chouinard
