@@ -5,8 +5,6 @@ How to use Requests and Selenium to prevent SEO errors.
 Selenium: Browser Automation
 Requests: HTTP requests
 
-Two tools to understand crawling and rendering better.
-
 1. Simple scripts to use Selenium and Requests modules
 2. Learn to respect robots.txt
 3. Login to staging site with Selenium
