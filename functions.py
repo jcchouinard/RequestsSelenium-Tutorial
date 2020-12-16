@@ -67,13 +67,14 @@ def get_canonical_from_html(response):
         - there is only one canonical tag;
         - The canonical matches with the page.
         
-        It returns False when:
+        It returns False when a page is not indexable or has an error:
         -There is more than one canonical;
         -There is no canonical.
+        -Canonical is not self-referrential
         '''
         soup = BeautifulSoup(response.content, "lxml")
         canonicals = soup.find_all('link', {'rel': 'canonical'})
-        canonical_tag = canonicals if canonicals else False
+        canonical_tag = canonicals if canonicals else False 
         if canonical_tag is not False:
             if len(canonicals) == 1:
                 canonical_link = canonical_tag[0]['href']

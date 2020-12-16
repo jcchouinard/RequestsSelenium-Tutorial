@@ -28,6 +28,8 @@ urls = [
     'http://127.0.0.1:5000/canonical-loop',
     'http://127.0.0.1:5000/timeout'
     ]
+for i in range(len(urls)):
+    print(urls[i])
 
 def check_redirects(url_list):
     '''
