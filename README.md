@@ -15,6 +15,9 @@ This tutorial was created for [RankSense](https://www.ranksense.com/) as part of
 
 ## Get Started
 
+Clone Repository
+`$ git clone https://github.com/ranksense/Twittorials.git`
+
 For this tutorial you will need to [install Selenium](https://www.jcchouinard.com/learn-selenium-python-seo-automation/).
 
 Install Requirements.
