@@ -86,3 +86,4 @@ def get_canonical_from_html(response):
                 return False, 'Multiple Canonical Tags Found'
         else:
             return True, 'No Canonical Tag Found'
+

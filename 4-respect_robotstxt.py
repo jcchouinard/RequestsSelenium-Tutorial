@@ -82,7 +82,8 @@ def run_selenium(url):
     else:
         print(colored(f'{url} is blocked by robots.txt','red'))
 
-for url in urls:
-    run_selenium(url)
-print('Done')
+if __name__ == '__main__':
+    for url in urls:
+        run_selenium(url)
+    print('Done')
     

@@ -16,6 +16,8 @@ Report on errors.
 '''
 import os
 import pandas as pd
+from IPython.display import display
+
 from urllib.parse import urljoin
 
 from functions import create_project, fetch_page, get_domain_name, get_canonical_from_html
@@ -99,7 +101,8 @@ if __name__ == '__main__':
     create_project(directory)
     filename = directory + 'redirect_report.csv'
     df = check_redirects(urls)
-    df.style.apply(highlight_errors, axis=1)
+    df = df.style.apply(highlight_errors, axis=1)
+    display(df)
 ## For those who would like to add the list of redirects to the df
 # for j in range(1,len(r.history)):
 #     status = r.history[j].status_code
